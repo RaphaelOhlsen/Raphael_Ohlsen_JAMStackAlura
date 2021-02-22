@@ -1,0 +1,78 @@
+Hi, my name is - fz-md  / color: green
+Font-Family - font-mono
+font-weight: 400
+
+Name: font-size: 80px
+Font-Family - font-sans
+font-weight - 600
+font-color: lightest-slate
+
+I build things for the web. - O mesmo do nome
+font-color: slate
+
+Texto padrao abaixo do nome e build - fz-xl -- font-sans -- font-weight: 400 , line-hight: 1,3
+font-color: slate
+
+01. About me - 
+Mumero 20px usando after, font-mono, color: green, fsz: fz-xl
+Texto - font: Sans, fw: 600, fsz: 32px
+
+Background - #0A192F
+Text Green - #64FFDA
+Title-mais claro - #CCD6F6
+Title e texto - #8892B0
+
+#889CB0
+
+#0A192F
+
+-dark-navy: #020c1b;
+--navy: #0a192f;
+--light-navy: #112240;
+--lightest-navy: #233554;
+--navy-shadow: rgba(2,12,27,0.7);
+--slate: #8892b0;
+--light-slate: #a8b2d1;
+--lightest-slate: #ccd6f6;
+--white: #e6f1ff;
+--green: #64ffda;
+--green-tint: rgba(100,255,218,0.1);
+--font-sans: "Calibre","San Francisco","SF Pro Text",-apple-system,system-ui,sans-serif;
+--font-mono: "SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace;
+--fz-xxs: 12px;
+--fz-xs: 13px;
+--fz-sm: 14px;
+--fz-md: 16px;
+--fz-lg: 18px;
+--fz-xl: 20px;
+--fz-xxl: 22px;
+
+
+1 - Crie um componente <Capa />
+1.1 - Renderize o componente <Capa />
+2 - Crie um componente <Cabecalho />
+2.1 - Renderize o componente <Cabecalho />
+2.2 - Podem ser criados subcomponentes. Ex: <Logo /> e <Nav />
+3 - Crie um componente <WrapperProjetos />
+3.1 - Renderize o componente <WrapperProjetos />
+Esse componente representará o wrapper onde os cards de projetos são exibidos.
+4 - Crie um componente <SectionTitle />
+4.1 - Renderize o componente <SectionTitle />
+Esse componente representará o título.
+5 - Crie um componente <Card />
+5.1 - Renderize o componente <Card />
+Esse componente representará os cards onde os projetos são exibidos.
+5.2 - Podem ser criados subcomponentes para implementação de tema e responsividade.
+Ex: <CardTitle />, <CardImage />,<Card Text />, <CardDestaque />.
+6 - Crie um componente <Footer />
+6.1 - Renderize o componente <Footer />
+Esse componente representará o footer da página.
+6.2 - Podem ser criados subcomponentes para imagens <FooterIcon />.
+
+7 - Adicione PropTypes a todos os componentes
+
+
+
+https://github.com/bchiang7/v4
+https://brittanychiang.com/
+https://bootcamps.alura.com.br/course/projeto-modulo-1/task/74052
