@@ -1,8 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  ${({ objectFit }) => css`
+    position: relative;
+    width: 1200px;
+    height: 300px;
+    margin: 0 auto;
+
+    img {
+      object-fit: ${objectFit};
+    }
+  `}
 `;

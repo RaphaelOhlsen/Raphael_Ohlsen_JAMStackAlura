@@ -2,7 +2,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Box from '../src/components/foundation/layout/Box';
-import Cover2 from '../src/components/commons/Cover2';
 import HeaderDesktop from '../src/components/commons/HeaderDesktop';
 import {
   ProjectsTitle,
@@ -15,8 +14,9 @@ import HeaderMobile from '../src/components/commons/HeaderMobile';
 import Footer from '../src/components/commons/Footer';
 import breakpointsMedia from '../src/theme/utils/breakpointsMedia';
 
-const imgUrl = require('../public/images/project1.jpeg').default;
-const imgUrl2 = require('../public/images/project2.jpeg').default;
+const imgUrl = '/images/project1.jpeg';
+
+const imgUrl2 = '/images/project2.jpeg';
 
 const MainRow = styled.div`
   order: initial;
@@ -39,7 +39,6 @@ const OrdinaryRow = styled.div`
 export default function Home() {
   return (
     <Box display="flex" flexDirection="column" width="100%">
-      <Cover2 />
       <HeaderMobile />
       <HeaderDesktop />
       <WrapperProjects>

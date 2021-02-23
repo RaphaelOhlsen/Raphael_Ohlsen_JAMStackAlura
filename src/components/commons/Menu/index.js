@@ -1,9 +1,7 @@
 import React from 'react';
-// import Image from 'next/image';
+import Image from 'next/image';
 import Text from '../../foundation/Text';
 import { MenuWrapper, LeftSide, RightSide } from './styles';
-
-const imgUrl = require('../../../../public/images/darkBrand.svg').default;
 
 const Menu = () => {
   const links = [
@@ -13,7 +11,7 @@ const Menu = () => {
   return (
     <MenuWrapper>
       <LeftSide>
-        <img src={imgUrl} alt="Mocad Brand" />
+        <Image src="/images/darkBrand.svg" width={190} height={32} />
       </LeftSide>
       <RightSide>
         <ul>

@@ -2,20 +2,22 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const CardImage = styled.div`
-  max-width: 100%;
-  height: 180px;
-  /* flex: 2;
-  height: 100%; */
-  background-image: url(${({ img }) => img});
-  background-size: cover;
-  background-repeat: no-repeat;
+  ${({ objectFit }) => css`
+    position: relative;
+    max-width: 100%;
+    height: 180px;
 
-  ${breakpointsMedia({
-    md: css`
-      flex: 2;
-      height: 100%;
-    `,
-  })}
+    ${breakpointsMedia({
+      md: css`
+        flex: 2;
+        height: 100%;
+      `,
+    })}
+
+    img {
+      object-fit: ${objectFit};
+    }
+  `}
 `;
 
 export const CardInfoWrapper = styled.div`

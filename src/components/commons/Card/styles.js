@@ -2,17 +2,21 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const CardImage = styled.div`
-  max-width: 100%;
-  height: 180px;
-  background-image: url(${({ img }) => img});
-  background-size: cover;
-  background-repeat: no-repeat;
+  ${({ objectFit }) => css`
+    position: relative;
+    max-width: 100%;
+    height: 180px;
 
-  ${breakpointsMedia({
-    md: css`
-      height: 390px;
-    `,
-  })}
+    ${breakpointsMedia({
+      md: css`
+        height: 390px;
+      `,
+    })}
+
+    img {
+      object-fit: ${objectFit};
+    }
+  `}
 `;
 
 export const CardTitle = styled.div`

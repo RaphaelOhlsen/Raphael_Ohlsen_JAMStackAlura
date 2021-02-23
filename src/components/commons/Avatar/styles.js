@@ -1,20 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div``;
 
 Wrapper.Avatar = styled.div`
-  max-width: 150px;
-  align-items: center;
-  width: 100%;
+  ${({ objectFit }) => css`
+    position: relative;
+    width: 150px;
+    height: 150px;
 
-  img {
-    width: 100%;
-    border-radius: 50%;
-  }
+    img {
+      object-fit: ${objectFit};
+      border-radius: 50%;
+    }
+  `}
 `;
-
-// Wrapper.AvatarName = styled.p`
-//   margin-top: 5px;
-//   text-align: center;
-//   color: ${({ theme }) => theme.colors.tertiary.main.color};
-// `;

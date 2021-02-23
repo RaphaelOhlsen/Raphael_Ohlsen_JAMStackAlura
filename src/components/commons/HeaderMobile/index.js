@@ -1,15 +1,24 @@
 import React from 'react';
-import { WrapperHeaderMobile, WrapperDescription } from './styles';
+import Image from 'next/image';
+import {
+  WrapperHeaderMobile,
+  WrapperDescription,
+  WrapperImage,
+} from './styles';
 import Menu from '../Menu';
 import Avatar from '../Avatar';
 import Text from '../../foundation/Text';
 
-const imgUrl = require('../../../../public/images/darkBrand.svg').default;
-const avatarUrl = require('../../../../public/images/avatar.jpg').default;
+const brandUrl = '/images/darkBrand.svg';
+
+const avatarUrl = '/images/avatar.jpg';
 
 const HeaderMobile = () => (
   <WrapperHeaderMobile>
-    <img src={imgUrl} alt="Imagem do Avatar" width="190" height="32" />
+    <WrapperImage>
+      <Image src={brandUrl} alt="Imagem do Avatar" width={190} height={32} />
+    </WrapperImage>
+
     <Menu />
     <Avatar imgUrl={avatarUrl} />
     <WrapperDescription>

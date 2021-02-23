@@ -3,13 +3,15 @@ import Menu from '../Menu';
 import Text from '../../foundation/Text';
 import Avatar from '../Avatar';
 import { Wrapper, WrapperDescription, WrapperHeaderDesktop } from './styles';
+import Cover from '../Cover';
 
-const imgUrl = require('../../../../public/images/avatar.jpg').default;
+const avatarUrl = '/images/avatar.jpg';
 
 const HeaderDesktop = () => (
   <WrapperHeaderDesktop>
+    <Cover />
     <Wrapper>
-      <Avatar imgUrl={imgUrl} />
+      <Avatar imgUrl={avatarUrl} />
       <Menu />
     </Wrapper>
     <WrapperDescription>

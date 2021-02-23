@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Image from 'next/image';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 
@@ -14,7 +15,9 @@ import {
 export const HighLightCard = ({ size, img, title }) => (
   <Grid.Col value={size}>
     <CardWrapper>
-      <CardImage img={img} />
+      <CardImage objectFit="cover">
+        <Image src={img} layout="fill" />
+      </CardImage>
       <CardInfoWrapper>
         <CardTitle>
           <Text

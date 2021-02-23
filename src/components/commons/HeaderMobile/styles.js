@@ -10,7 +10,6 @@ import {
 export const WrapperHeaderMobile = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   ${breakpointsMedia({
     md: css`
@@ -65,4 +64,17 @@ export const WrapperDescription = styled.div`
   p {
     font-size: 14px;
   }
+`;
+
+export const WrapperImage = styled.div`
+  ${({ objectFit }) => css`
+    position: relative;
+    width: 190px;
+    height: 32px;
+    margin: 15px auto 0 auto;
+
+    img {
+      object-fit: ${objectFit};
+    }
+  `}
 `;
