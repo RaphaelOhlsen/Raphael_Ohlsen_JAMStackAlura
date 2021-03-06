@@ -44,16 +44,14 @@ const TextBase = styled.span`
   ${propToStyle('marginTop')}
   ${propToStyle('textTransform')}
   ${propToStyle('letterSpacing')}
+  ${propToStyle('cursor')}
 `;
 
-const Text = ({ tag, variant, children, color, ...props }) => {
-  console.log(color);
-  return (
-    <TextBase as={tag} variant={variant} color={color} {...props}>
-      {children}
-    </TextBase>
-  );
-};
+const Text = ({ tag, variant, children, color, ...props }) => (
+  <TextBase as={tag} variant={variant} color={color} {...props}>
+    {children}
+  </TextBase>
+);
 
 Text.defaultProps = {
   tag: 'span',

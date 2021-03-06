@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Menu from '../Menu';
 import Text from '../../foundation/Text';
 import Avatar from '../Avatar';
@@ -7,12 +8,12 @@ import Cover from '../Cover';
 
 const avatarUrl = '/images/avatar.jpg';
 
-const HeaderDesktop = () => (
+const HeaderDesktop = ({ setModalState }) => (
   <WrapperHeaderDesktop>
     <Cover />
     <Wrapper>
       <Avatar imgUrl={avatarUrl} />
-      <Menu />
+      <Menu setModalState={setModalState} />
     </Wrapper>
     <WrapperDescription>
       <Text variant="paragraph1" as="p" maxWidth="620px" marginTop="8px">
@@ -23,5 +24,9 @@ const HeaderDesktop = () => (
     </WrapperDescription>
   </WrapperHeaderDesktop>
 );
+
+HeaderDesktop.propTypes = {
+  setModalState: PropTypes.bool.isRequired,
+};
 
 export default HeaderDesktop;

@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 import Text from '../../foundation/Text';
 import { MenuWrapper, LeftSide, RightSide } from './styles';
 
-const Menu = () => {
+const Menu = ({ setModalState }) => {
   const links = [
     { text: 'About', url: '/about' },
-    { text: 'Contact', url: '/faq' },
+    { text: 'Contact', url: '/' },
   ];
   return (
     <MenuWrapper>
@@ -31,6 +32,10 @@ const Menu = () => {
                 href={link.url}
                 textDecoration="none"
                 transition="color 300ms"
+                onClick={(ev) => {
+                  ev.preventDefault();
+                  setModalState(true);
+                }}
               >
                 {link.text}
               </Text>
@@ -40,6 +45,10 @@ const Menu = () => {
       </RightSide>
     </MenuWrapper>
   );
+};
+
+Menu.propTypes = {
+  setModalState: PropTypes.bool.isRequired,
 };
 
 export default Menu;

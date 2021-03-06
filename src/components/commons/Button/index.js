@@ -29,6 +29,18 @@ const Button = styled.button`
   &:hover, &:focus {
     opacity: 0.5;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `}
+
   ${breakpointsMedia({
     xs: css`
       ${TextStyleVariantsMap.smallestException}
