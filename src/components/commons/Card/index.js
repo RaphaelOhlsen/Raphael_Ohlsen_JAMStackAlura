@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
@@ -26,3 +27,12 @@ export const Card = ({ size, img, title }) => (
     </CardWrapper>
   </Grid.Col>
 );
+
+Card.propTypes = {
+  size: PropTypes.shape({
+    xs: PropTypes.number.isRequired,
+    md: PropTypes.number.isRequired,
+  }).isRequired,
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};

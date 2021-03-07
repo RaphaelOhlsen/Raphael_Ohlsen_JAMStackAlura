@@ -30,6 +30,7 @@ const Menu = ({ setModalState }) => {
                 variant="paragraph1"
                 tag="a"
                 href={link.url}
+                color="tertiary.dark"
                 textDecoration="none"
                 transition="color 300ms"
                 onClick={(ev) => {
@@ -48,7 +49,7 @@ const Menu = ({ setModalState }) => {
 };
 
 Menu.propTypes = {
-  setModalState: PropTypes.bool.isRequired,
+  setModalState: PropTypes.func.isRequired,
 };
 
 export default Menu;

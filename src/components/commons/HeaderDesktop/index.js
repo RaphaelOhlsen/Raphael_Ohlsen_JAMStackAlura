@@ -26,7 +26,7 @@ const HeaderDesktop = ({ setModalState }) => (
 );
 
 HeaderDesktop.propTypes = {
-  setModalState: PropTypes.bool.isRequired,
+  setModalState: PropTypes.func.isRequired,
 };
 
 export default HeaderDesktop;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 import {
   WrapperHeaderMobile,
@@ -13,13 +14,13 @@ const brandUrl = '/images/darkBrand.svg';
 
 const avatarUrl = '/images/avatar.jpg';
 
-const HeaderMobile = () => (
+const HeaderMobile = ({ setModalState }) => (
   <WrapperHeaderMobile>
     <WrapperImage>
       <Image src={brandUrl} alt="Imagem do Avatar" width={190} height={32} />
     </WrapperImage>
 
-    <Menu />
+    <Menu setModalState={setModalState} />
     <Avatar imgUrl={avatarUrl} />
     <WrapperDescription>
       <Text variant="paragraph1" as="p" maxWidth="620px" marginTop="8px">
@@ -30,5 +31,9 @@ const HeaderMobile = () => (
     </WrapperDescription>
   </WrapperHeaderMobile>
 );
+
+HeaderMobile.propTypes = {
+  setModalState: PropTypes.func.isRequired,
+};
 
 export default HeaderMobile;

@@ -10,11 +10,11 @@ const Modal = ({ isOpen, onClose, children }) => {
     <Box
       position="absolute"
       top={{
-        xs: '30px',
+        xs: '20px',
         md: '10px',
       }}
       right={{
-        xs: '40px',
+        xs: '20px',
         md: '10px',
       }}
       onClick={() => onClose()}

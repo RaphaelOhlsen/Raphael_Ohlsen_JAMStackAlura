@@ -23,17 +23,9 @@ export const TextStyleVariantsMap = {
   `,
 };
 
-const setColor = css`
-  color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
-`;
-
-const setDefaultColor = css`
-  color: ${({ theme }) => theme.colors.tertiary.dark.color};
-`;
-
 const TextBase = styled.span`
   ${(props) => TextStyleVariantsMap[props.variant]}
-  ${({ color }) => (color ? setColor : setDefaultColor)}
+  color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
   ${propToStyle('textAlign')}
   ${propToStyle('marginRight')}
   ${propToStyle('textDecoration')}
@@ -47,8 +39,8 @@ const TextBase = styled.span`
   ${propToStyle('cursor')}
 `;
 
-const Text = ({ tag, variant, children, color, ...props }) => (
-  <TextBase as={tag} variant={variant} color={color} {...props}>
+const Text = ({ tag, variant, children, ...props }) => (
+  <TextBase as={tag} variant={variant} {...props}>
     {children}
   </TextBase>
 );
@@ -71,7 +63,6 @@ Text.propTypes = {
     'a',
     'span',
   ]),
-  color: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(['paragraph1', 'smallestException']),
 };

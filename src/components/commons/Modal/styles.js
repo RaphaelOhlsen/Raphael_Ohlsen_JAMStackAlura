@@ -1,4 +1,5 @@
 import styled, { css, createGlobalStyle } from 'styled-components';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const ModalWrapper = styled.div`
   display: flex;
@@ -14,13 +15,20 @@ export const ModalWrapper = styled.div`
   overflow: scroll;
   transition: 0.3s;
   z-index: 100;
+  overflow: scroll;
+
+  ${breakpointsMedia({
+    md: css`
+      overflow: hidden;
+    `,
+  })}
 
   ${({ isOpen }) => {
     if (isOpen) {
       return css`
         opacity: 1;
         pointer-events: all;
-        overflow: hidden;
+        /* overflow: hidden; */
       `;
     }
 

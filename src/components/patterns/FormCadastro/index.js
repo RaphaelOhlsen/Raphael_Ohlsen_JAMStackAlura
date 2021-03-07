@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Lottie } from '@crello/react-lottie';
 import errorAnimation from './animations/error.json';
 import successAnimation from './animations/success.json';
@@ -16,7 +17,7 @@ const formStates = {
   ERROR: 'ERROR',
 };
 
-const FormContent = () => {
+const FormContent = ({ setModalState }) => {
   const [isFormSubmited, setIsFormSubmited] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [userInfo, setUserInfo] = useState({
@@ -24,14 +25,20 @@ const FormContent = () => {
     name: '',
     message: '',
   });
+  const [errorInfo, setErrorInfo] = useState({
+    email: true,
+    name: true,
+    message: true,
+  });
 
   const isFormInvalid =
-    userInfo.email.length === 0 ||
+    errorInfo.email ||
     userInfo.name.length === 0 ||
     userInfo.message.length === 0;
 
   async function resetValues() {
     await new Promise((resolve) => setTimeout(resolve, 5000));
+    setModalState(false);
     setIsFormSubmited(false);
     setSubmissionStatus(formStates.DEFAULT);
     setUserInfo({ email: '', name: '', message: '' });
@@ -50,8 +57,12 @@ const FormContent = () => {
         ev.preventDefault();
         setIsFormSubmited(true);
         setSubmissionStatus(formStates.LOADING);
-        const userDTO = { username: userInfo.usuario, name: userInfo.nome };
-        fetch('https://instalura-api.vercel.app/api/users', {
+        const userDTO = {
+          name: userInfo.name,
+          email: userInfo.email,
+          message: userInfo.message,
+        };
+        fetch('https://contact-form-api-jamstack.herokuapp.com/message ', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -60,6 +71,7 @@ const FormContent = () => {
         })
           .then((respostaDoServidor) => {
             if (respostaDoServidor.ok) {
+              console.log(respostaDoServidor);
               return respostaDoServidor.json();
             }
 
@@ -86,6 +98,8 @@ const FormContent = () => {
           type="text"
           name="name"
           value={userInfo.name}
+          errorInfo={errorInfo}
+          setErrorInfo={setErrorInfo}
           onChange={handleChange}
         />
       </Box>
@@ -94,7 +108,10 @@ const FormContent = () => {
           label="Email"
           type="text"
           name="email"
+          mask="lowerCase"
           value={userInfo.email}
+          setErrorInfo={setErrorInfo}
+          errorInfo={errorInfo}
           onChange={handleChange}
         />
       </Box>
@@ -105,20 +122,24 @@ const FormContent = () => {
           name="message"
           value={userInfo.message}
           onChange={handleChange}
+          setErrorInfo={setErrorInfo}
+          errorInfo={errorInfo}
           rows="5"
           cols="40"
         />
       </Box>
+
       <Button
         variant="primary.main"
         type="submit"
         disabled={isFormInvalid}
         fullWidth
       >
-        Send
+        SEND
       </Button>
+
       <Box display="flex" justifyContent="center">
-        <Box width="100px">
+        <Box width="80px">
           {!isFormSubmited && submissionStatus === formStates.LOADING && (
             <p>Teste</p>
           )}
@@ -156,7 +177,7 @@ const FormContent = () => {
 };
 
 // eslint-disable-next-line react/prop-types
-const FormCadastro = ({ propsDoModal }) => (
+const FormCadastro = ({ propsDoModal, setModalState }) => (
   <Grid.Row marginLeft={0} marginRight={0} flex={1} justifyContent="center">
     <Grid.Col
       display="flex"
@@ -183,10 +204,13 @@ const FormCadastro = ({ propsDoModal }) => (
         {...propsDoModal}
       >
         <propsDoModal.CloseButton />
-        <FormContent />
+        <FormContent setModalState={setModalState} />
       </Box>
     </Grid.Col>
   </Grid.Row>
 );
 
+FormContent.propTypes = {
+  setModalState: PropTypes.func.isRequired,
+};
 export default FormCadastro;

@@ -56,3 +56,9 @@ export const Input = styled(Text)`
     );
   }}
 `;
+
+export const Message = styled.span`
+  color: ${({ theme }) => theme.colors.primary.main.color};
+  display: block;
+  margin: 5px;
+`;

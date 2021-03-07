@@ -22,9 +22,14 @@ export default function Home() {
   return (
     <Box display="flex" flexDirection="column" width="100%">
       <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
-        {(propsDoModal) => <FormCadastro propsDoModal={propsDoModal} />}
+        {(propsDoModal) => (
+          <FormCadastro
+            setModalState={setModalState}
+            propsDoModal={propsDoModal}
+          />
+        )}
       </Modal>
-      <HeaderMobile />
+      <HeaderMobile setModalState={setModalState} />
       <HeaderDesktop setModalState={setModalState} />
       <WrapperProjects>
         <ProjectsTitle>Some Things I' ve Built</ProjectsTitle>

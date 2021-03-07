@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { Wrapper } from './styles';
 import Text from '../../foundation/Text';
 
-// eslint-disable-next-line react/prop-types
 const Avatar = ({ imgUrl }) => (
   <Wrapper>
     <Wrapper.Avatar objectFit="contain">
@@ -24,5 +24,9 @@ const Avatar = ({ imgUrl }) => (
     </Text>
   </Wrapper>
 );
+
+Avatar.propTypes = {
+  imgUrl: PropTypes.string.isRequired,
+};
 
 export default Avatar;
