@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import Box from '../src/components/foundation/layout/Box';
 import HeaderDesktop from '../src/components/commons/HeaderDesktop';
@@ -13,6 +12,7 @@ import HeaderMobile from '../src/components/commons/HeaderMobile';
 import Footer from '../src/components/commons/Footer';
 import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';
+import Menu2 from '../src/components/commons/Menu2';
 
 const imgUrl = '/images/project1.jpeg';
 const imgUrl2 = '/images/project2.jpeg';
@@ -34,8 +34,9 @@ export default function Home() {
         )}
       </Modal>
       {/* <HeaderMobile setModalState={setModalState} /> */}
-      <HeaderDesktop setModalState={setModalState} />
-      <WrapperProjects>
+      {/* <HeaderDesktop setModalState={setModalState} /> */}
+      <Menu2 />
+      {/* <WrapperProjects>
         <ProjectsTitle>Some Things I' ve Built</ProjectsTitle>
         <Grid.Container>
           <Grid.Row>
@@ -49,7 +50,7 @@ export default function Home() {
             <Card size={{ xs: 12, md: 4 }} img={imgUrl} title="Projeto 3" />
           </Grid.Row>
         </Grid.Container>
-      </WrapperProjects>
+      </WrapperProjects> */}
       <Footer />
     </Box>
   );

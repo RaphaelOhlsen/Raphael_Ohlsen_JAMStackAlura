@@ -1,39 +1,21 @@
 import styled, { css } from 'styled-components';
 import { Wrapper as WrapperAvatar } from '../Avatar/styles';
-import { MenuWrapper } from '../Menu/styles';
+import {
+  MenuWrapper,
+  LeftSide as MenuWrapperLeftSide,
+  RightSide as MenuWrapperRightSide,
+} from '../Menu/styles';
+
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const WrapperHeaderDesktop = styled.div`
-  display: none;
+  /* display: none; */
 
   ${breakpointsMedia({
     md: css`
       display: block;
     `,
   })}
-`;
-
-export const Wrapper = styled.div`
-  margin: 0 auto;
-  display: flex;
-  max-width: 1000px;
-  width: 100%;
-  height: 120px;
-  justify-content: space-between;
-
-  ${WrapperAvatar} {
-    flex-shrink: 2;
-    margin-left: 70px;
-    position: relative;
-    top: -70px;
-  }
-
-  ${MenuWrapper} {
-    margin-right: 50px;
-    max-width: 450px;
-    width: 100%;
-    margin-top: 16px;
-  }
 `;
 
 export const WrapperDescription = styled.div`
@@ -43,6 +25,31 @@ export const WrapperDescription = styled.div`
   width: 100%;
   padding-left: 85px;
   padding-right: 50px;
+
+  & > p {
+    display: none;
+    ${breakpointsMedia({
+      md: css`
+        display: block;
+      `,
+    })}
+  }
+`;
+
+export const Wrapper = styled.div`
+  margin: 0 auto;
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  height: 120px;
+  justify-content: space-around;
+
+  ${WrapperAvatar} {
+    flex-shrink: 2;
+    position: relative;
+    top: -70px;
+    left: 0;
+  }
 `;
 
 export const WrapperProjects = styled.section`

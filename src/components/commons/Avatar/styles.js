@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: none;
+  ${breakpointsMedia({
+    md: css`
+      display: block;
+    `,
+  })}
+`;
 
 Wrapper.Avatar = styled.div`
   ${({ objectFit }) => css`
@@ -12,5 +20,5 @@ Wrapper.Avatar = styled.div`
       object-fit: ${objectFit};
       border-radius: 50%;
     }
-  `}
+  `};
 `;
