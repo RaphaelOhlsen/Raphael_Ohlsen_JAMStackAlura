@@ -106,7 +106,7 @@ const FormContent = ({ setModalState }) => {
       <Box margin="0 0 20px 0">
         <TextField
           label="Email"
-          type="text"
+          type="email"
           name="email"
           mask="lowerCase"
           value={userInfo.email}
@@ -140,9 +140,6 @@ const FormContent = ({ setModalState }) => {
 
       <Box display="flex" justifyContent="center">
         <Box width="80px">
-          {!isFormSubmited && submissionStatus === formStates.LOADING && (
-            <p>Teste</p>
-          )}
           {isFormSubmited && submissionStatus === formStates.LOADING && (
             <Lottie
               config={{

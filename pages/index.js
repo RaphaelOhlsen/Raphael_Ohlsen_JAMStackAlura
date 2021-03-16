@@ -21,7 +21,11 @@ export default function Home() {
   const [isModalOpen, setModalState] = useState(false);
   return (
     <Box display="flex" flexDirection="column" width="100%">
-      <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalState(false)}
+        setModalState={setModalState}
+      >
         {(propsDoModal) => (
           <FormCadastro
             setModalState={setModalState}
@@ -38,7 +42,7 @@ export default function Home() {
             <HighLightCard
               size={{ xs: 12, md: 12 }}
               img={imgUrl2}
-              title="Destaque2"
+              title="Destaque"
             />
             <Card size={{ xs: 12, md: 4 }} img={imgUrl} title="Projeto 1" />
             <Card size={{ xs: 12, md: 4 }} img={imgUrl} title="Projeto 2" />

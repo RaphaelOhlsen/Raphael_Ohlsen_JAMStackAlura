@@ -6,7 +6,6 @@ import theme from '../src/theme';
 import GlobalStyle from '../src/theme/GlobalStyle';
 
 export default function App({ Component, pageProps }) {
-  console.log(pageProps);
   return (
     <>
       <Head>
@@ -27,5 +26,5 @@ export default function App({ Component, pageProps }) {
 
 App.propTypes = {
   Component: PropTypes.func.isRequired,
-  pageProps: PropTypes.object.isRequired,
+  pageProps: PropTypes.element.isRequired,
 };

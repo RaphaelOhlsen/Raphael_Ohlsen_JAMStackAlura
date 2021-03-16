@@ -32,7 +32,14 @@ export const Input = styled(Text)`
 
   outline: 0;
 
-  resize: none;
+  ${({ as }) => {
+    if (as === 'textarea')
+      return css`
+        resize: none;
+      `;
+    return true;
+  }}
+
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: border-color 0.3s;
 

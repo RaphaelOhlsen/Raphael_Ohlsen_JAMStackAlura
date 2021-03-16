@@ -76,7 +76,7 @@ export default function TextField({
 }
 
 TextField.defaultProps = {
-  mask: '',
+  mask: null,
 };
 
 TextField.propTypes = {
