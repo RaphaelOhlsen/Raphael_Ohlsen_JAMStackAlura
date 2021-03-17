@@ -12,7 +12,7 @@ import HeaderMobile from '../src/components/commons/HeaderMobile';
 import Footer from '../src/components/commons/Footer';
 import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';
-import Menu2 from '../src/components/commons/Menu2';
+import Menu from '../src/components/commons/Menu';
 
 const imgUrl = '/images/project1.jpeg';
 const imgUrl2 = '/images/project2.jpeg';
@@ -35,7 +35,7 @@ export default function Home() {
       </Modal>
       {/* <HeaderMobile setModalState={setModalState} /> */}
       {/* <HeaderDesktop setModalState={setModalState} /> */}
-      <Menu2 />
+      <Menu />
       {/* <WrapperProjects>
         <ProjectsTitle>Some Things I' ve Built</ProjectsTitle>
         <Grid.Container>

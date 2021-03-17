@@ -2,17 +2,12 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const Wrapper = styled.div`
-  display: none;
-  ${breakpointsMedia({
-    md: css`
-      display: block;
-    `,
-  })}
+  position: relative;
 `;
 
 Wrapper.Avatar = styled.div`
   ${({ objectFit }) => css`
-    position: relative;
+    position: absolute;
     width: 150px;
     height: 150px;
 

@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Wrapper as WrapperAvatar } from '../Avatar/styles';
+
 import {
   MenuWrapper,
-  LeftSide as MenuWrapperLeftSide,
-  RightSide as MenuWrapperRightSide,
+  BrandSide as MenuWrapperLeftSide,
+  NavSide as MenuWrapperRightSide,
 } from '../Menu/styles';
 
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
@@ -45,10 +46,27 @@ export const Wrapper = styled.div`
   justify-content: space-around;
 
   ${WrapperAvatar} {
-    flex-shrink: 2;
-    position: relative;
-    top: -70px;
-    left: 0;
+    display: none;
+    ${breakpointsMedia({
+      md: css`
+        display: block;
+        position: relative;
+        top: -70px;
+        left: 0;
+      `,
+    })}
+  }
+
+  ${MenuWrapper} {
+    ${breakpointsMedia({
+      md: css`
+        height: 50px;
+        background: inherit;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      `,
+    })}
   }
 `;
 

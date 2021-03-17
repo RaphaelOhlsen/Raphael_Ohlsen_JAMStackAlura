@@ -13,9 +13,12 @@ import HeaderMobile from '../src/components/commons/HeaderMobile';
 import Footer from '../src/components/commons/Footer';
 import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';
+import AvatarDescription from '../src/components/commons/AvatarDescription';
+import Avatar from '../src/components/commons/Avatar';
 
 const imgUrl = '/images/project1.jpeg';
 const imgUrl2 = '/images/project2.jpeg';
+const avatarUrl = '/images/avatar.jpg';
 
 export default function Home() {
   const [isModalOpen, setModalState] = useState(false);
@@ -35,6 +38,8 @@ export default function Home() {
       </Modal>
       {/* <HeaderMobile setModalState={setModalState} /> */}
       <HeaderDesktop setModalState={setModalState} />
+      {/* <Avatar imgUrl={avatarUrl} /> */}
+      <AvatarDescription />
       <WrapperProjects>
         <ProjectsTitle>Some Things I' ve Built</ProjectsTitle>
         <Grid.Container>

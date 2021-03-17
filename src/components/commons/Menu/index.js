@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import Text from '../../foundation/Text';
-import { MenuWrapper, LeftSide, RightSide } from './styles';
+import { MenuWrapper, BrandSide, NavSide } from './styles';
 
 const Menu = ({ setModalState }) => {
   const links = [
@@ -11,10 +11,10 @@ const Menu = ({ setModalState }) => {
   ];
   return (
     <MenuWrapper>
-      <LeftSide>
+      <BrandSide>
         <Image src="/images/darkBrand.svg" width={190} height={32} />
-      </LeftSide>
-      <RightSide>
+      </BrandSide>
+      <NavSide>
         <ul>
           {links.map((link, index) => (
             <li key={`link__${index}`}>
@@ -43,7 +43,7 @@ const Menu = ({ setModalState }) => {
             </li>
           ))}
         </ul>
-      </RightSide>
+      </NavSide>
     </MenuWrapper>
   );
 };

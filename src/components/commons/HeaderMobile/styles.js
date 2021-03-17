@@ -3,8 +3,8 @@ import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import { Wrapper as WrapperAvatar } from '../Avatar/styles';
 import {
   MenuWrapper,
-  LeftSide as MenuWrapperLeftSide,
-  RightSide as MenuWrapperRightSide,
+  BrandSide as MenuWrapperBrandSide,
+  NavSide as MenuWrapperNavSide,
 } from '../Menu/styles';
 
 export const WrapperHeaderMobile = styled.div`
@@ -25,11 +25,11 @@ export const WrapperHeaderMobile = styled.div`
     margin-top: 10px;
   }
 
-  ${MenuWrapperLeftSide} {
+  ${MenuWrapperBrandSide} {
     display: none;
   }
 
-  ${MenuWrapperRightSide} {
+  ${MenuWrapperNavSide} {
     ul {
       padding: 10px 30px;
       border: 1px solid ${({ theme }) => theme.colors.primary.main.color};

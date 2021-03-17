@@ -15,13 +15,13 @@ const HeaderDesktop = ({ setModalState }) => (
       <Avatar imgUrl={avatarUrl} />
       <Menu setModalState={setModalState} />
     </Wrapper>
-    <WrapperDescription>
+    {/* <WrapperDescription>
       <Text variant="paragraph1" as="p" maxWidth="620px" marginTop="8px">
         Telecommunications engineer returning to the code world. This is
         addictive. I want to learn a lot and support the great code community.
         Here we go!!!!
       </Text>
-    </WrapperDescription>
+    </WrapperDescription> */}
   </WrapperHeaderDesktop>
 );
 
