@@ -41,6 +41,7 @@ export const CardTitle = styled.div`
 `;
 
 export const CardWrapper = styled.div`
+  position: relative;
   max-width: 100%;
   height: 250px;
   border: 2px solid ${({ theme }) => theme.colors.tertiary.light.color};
@@ -48,15 +49,34 @@ export const CardWrapper = styled.div`
   color: ${({ theme }) => theme.colors.tertiary.main.color};
   margin-bottom: 30px;
   cursor: pointer;
+
   &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primary.main.color};
     color: ${({ theme }) => theme.colors.primary.main.color};
+  }
+
+  &:before {
+    content: '';
+    background-color: ${({ theme }) => theme.colors.primary.main.color};
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 200ms all;
+    z-index: 800;
+  }
+
+  &:hover:before {
+    opacity: 0;
   }
 
   ${breakpointsMedia({
     md: css`
       height: 500px;
       margin-bottom: 50px;
+      cursor: pointer;
     `,
   })}
 `;

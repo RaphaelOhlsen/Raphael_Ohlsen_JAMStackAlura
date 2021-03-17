@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import Box from '../src/components/foundation/layout/Box';
-import HeaderDesktop from '../src/components/commons/HeaderDesktop';
+import Header from '../src/components/commons/Header';
 import {
   ProjectsTitle,
   WrapperProjects,
-} from '../src/components/commons/HeaderDesktop/styles';
+} from '../src/components/commons/Header/styles';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Card } from '../src/components/commons/Card';
 import { HighLightCard } from '../src/components/commons/HighLightCard';
-import HeaderMobile from '../src/components/commons/HeaderMobile';
 import Footer from '../src/components/commons/Footer';
 import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   ${({ objectFit }) => css`
     position: relative;
     width: 1200px;
-    height: 300px;
+    height: 290px;
     margin: 0 auto;
 
     img {

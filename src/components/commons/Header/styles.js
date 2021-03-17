@@ -1,22 +1,22 @@
 import styled, { css } from 'styled-components';
 import { Wrapper as WrapperAvatar } from '../Avatar/styles';
 
-import {
-  MenuWrapper,
-  BrandSide as MenuWrapperLeftSide,
-  NavSide as MenuWrapperRightSide,
-} from '../Menu/styles';
+import { MenuWrapper } from '../Menu/styles';
 
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const WrapperHeaderDesktop = styled.div`
-  /* display: none; */
-
-  ${breakpointsMedia({
-    md: css`
-      display: block;
-    `,
-  })}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ${WrapperAvatar} {
+    margin-top: 20px;
+    ${breakpointsMedia({
+      md: css`
+        display: none;
+      `,
+    })}
+  }
 `;
 
 export const WrapperDescription = styled.div`
@@ -24,17 +24,14 @@ export const WrapperDescription = styled.div`
   display: flex;
   max-width: 1000px;
   width: 100%;
-  padding-left: 85px;
+  padding-left: 50px;
   padding-right: 50px;
-
-  & > p {
-    display: none;
-    ${breakpointsMedia({
-      md: css`
-        display: block;
-      `,
-    })}
-  }
+  ${breakpointsMedia({
+    md: css`
+      padding-left: 15px;
+      margin-top: 10px;
+    `,
+  })}
 `;
 
 export const Wrapper = styled.div`

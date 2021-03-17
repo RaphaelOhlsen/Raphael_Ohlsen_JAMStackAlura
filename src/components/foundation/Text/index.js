@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import propToStyle from '../../../theme/utils/propToStyle';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import Link from '../../commons/Link';
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
@@ -20,6 +22,23 @@ export const TextStyleVariantsMap = {
       theme.typographyVariants.smallestException.fontWeight};
     line-height: ${({ theme }) =>
       theme.typographyVariants.smallestException.lineHeight};
+  `,
+
+  title: css`
+    ${({ theme }) => css`
+      font-size: ${theme.typographyVariants.titleXS.fontSize};
+      font-weight: ${theme.typographyVariants.titleXS.fontWeight};
+      line-height: ${theme.typographyVariants.titleXS.lineHeight};
+    `}
+    ${breakpointsMedia({
+      md: css`
+        ${({ theme }) => css`
+          font-size: ${theme.typographyVariants.title.fontSize};
+          font-weight: ${theme.typographyVariants.title.fontWeight};
+          line-height: ${theme.typographyVariants.title.lineHeight};
+        `}
+      `,
+    })}
   `,
 };
 
@@ -39,15 +58,26 @@ const TextBase = styled.span`
   ${propToStyle('cursor')}
 `;
 
-const Text = ({ tag, variant, children, ...props }) => (
-  <TextBase as={tag} variant={variant} {...props}>
-    {children}
-  </TextBase>
-);
+const Text = ({ tag, variant, children, href, ...props }) => {
+  if (href) {
+    return (
+      <TextBase as={Link} href={href} variant={variant} {...props}>
+        {children}
+      </TextBase>
+    );
+  }
+  return (
+    <TextBase as={tag} variant={variant} {...props}>
+      {children}
+    </TextBase>
+  );
+};
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
+  children: null,
+  href: null,
 };
 
 Text.propTypes = {
@@ -63,8 +93,14 @@ Text.propTypes = {
     'a',
     'span',
   ]),
-  children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['paragraph1', 'smallestException']),
+  children: PropTypes.node,
+  variant: PropTypes.oneOf([
+    'title',
+    'paragraph1',
+    'subTitle',
+    'smallestException',
+  ]),
+  href: PropTypes.string,
 };
 
 export default Text;

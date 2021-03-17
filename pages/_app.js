@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import Head from 'next/head';
 import theme from '../src/theme';
@@ -24,7 +25,7 @@ export default function App({ Component, pageProps }) {
   );
 }
 
-App.propTypes = {
-  Component: PropTypes.func.isRequired,
-  pageProps: PropTypes.element.isRequired,
-};
+// App.propTypes = {
+//   Component: PropTypes.func.isRequired,
+//   pageProps: PropTypes.element.isRequired,
+// };

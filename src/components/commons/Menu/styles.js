@@ -37,7 +37,14 @@ export const NavSide = styled.nav`
     list-style: none;
     border: 1px solid ${({ theme }) => theme.colors.primary.main.color};
     border-radius: 8px;
-    padding: 10px 80px;
+    padding: 10px 30px;
+
+    ${breakpointsMedia({
+      sm: css`
+        margin-bottom: 64px;
+        padding: 10px 80px;
+      `,
+    })}
 
     ${breakpointsMedia({
       md: css`

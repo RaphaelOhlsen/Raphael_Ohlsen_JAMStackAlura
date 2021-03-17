@@ -1,13 +1,10 @@
 import styled, { css } from 'styled-components';
-import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
-export const Wrapper = styled.div`
-  position: relative;
-`;
+export const Wrapper = styled.div``;
 
 Wrapper.Avatar = styled.div`
   ${({ objectFit }) => css`
-    position: absolute;
+    position: relative;
     width: 150px;
     height: 150px;
 

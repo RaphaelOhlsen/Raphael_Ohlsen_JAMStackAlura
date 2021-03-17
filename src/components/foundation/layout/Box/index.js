@@ -21,9 +21,12 @@ const Box = styled.div`
   ${propToStyle('margin')};
   ${propToStyle('width')}
   ${propToStyle('height')};
+  ${propToStyle('min-Height')};
   ${propToStyle('marginRight')};
   ${propToStyle('borderRadius')};
   ${propToStyle('cursor')};
+  ${propToStyle('maxWidth')};
+  ${propToStyle('alignItems')};
 `;
 
 export default Box;

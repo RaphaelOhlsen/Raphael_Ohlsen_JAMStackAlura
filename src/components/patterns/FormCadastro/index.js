@@ -178,6 +178,7 @@ const FormCadastro = ({ propsDoModal, setModalState }) => (
   <Grid.Row marginLeft={0} marginRight={0} flex={1} justifyContent="center">
     <Grid.Col
       display="flex"
+      justifyContent="center"
       paddingRight={{ md: '0' }}
       flex={1}
       value={{ xs: 12, md: 5, lg: 4 }}
@@ -189,6 +190,10 @@ const FormCadastro = ({ propsDoModal, setModalState }) => (
         justifyContent="flex-start"
         alignItems="flex-start"
         height="600px"
+        maxWidth={{
+          sm: '430px',
+          md: '480px',
+        }}
         position="relative"
         flex={1}
         padding={{
@@ -197,7 +202,6 @@ const FormCadastro = ({ propsDoModal, setModalState }) => (
         }}
         backgroundColor="#111d2d"
         borderRadius="8px"
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...propsDoModal}
       >
         <propsDoModal.CloseButton />
