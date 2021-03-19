@@ -9,7 +9,12 @@ export const MenuWrapper = styled.header`
   flex-direction: column;
   max-width: 1000px;
   align-items: center;
-  margin: 20px auto;
+
+  ${breakpointsMedia({
+    sm: css`
+      margin: 20px auto;
+    `,
+  })}
 
   ${breakpointsMedia({
     md: css`
@@ -17,7 +22,7 @@ export const MenuWrapper = styled.header`
       justify-content: space-between;
       padding: 14px 28px;
       background: #0e223f;
-      margin: 0 auto 20px;
+      margin: 0 auto;
       border-radius: 0 0 8px 8px;
     `,
   })}

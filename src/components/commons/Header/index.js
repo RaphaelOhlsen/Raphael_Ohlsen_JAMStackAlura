@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Menu from '../Menu';
 import Text from '../../foundation/Text';
 import Avatar from '../Avatar';
@@ -8,12 +7,12 @@ import Cover from '../Cover';
 
 const avatarUrl = '/images/avatar.jpg';
 
-const Header = ({ setModalState }) => (
+const Header = () => (
   <WrapperHeaderDesktop>
     <Cover />
     <Wrapper>
       <Avatar imgUrl={avatarUrl} />
-      <Menu setModalState={setModalState} />
+      <Menu />
     </Wrapper>
     <Avatar imgUrl={avatarUrl} />
     <WrapperDescription>
@@ -25,9 +24,5 @@ const Header = ({ setModalState }) => (
     </WrapperDescription>
   </WrapperHeaderDesktop>
 );
-
-Header.propTypes = {
-  setModalState: PropTypes.func.isRequired,
-};
 
 export default Header;
