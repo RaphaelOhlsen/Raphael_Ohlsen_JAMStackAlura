@@ -4,13 +4,16 @@ import Image from 'next/image';
 import Text from '../../foundation/Text';
 import { MenuWrapper, BrandSide, NavSide } from './styles';
 import { WebsitePageContext } from '../../wrappers/WebsitePage/index';
+import Link from '../Link';
 
 const Menu = () => {
   const websitePageContext = useContext(WebsitePageContext);
   return (
     <MenuWrapper>
       <BrandSide>
-        <Image src="/images/darkBrand.svg" width={190} height={32} />
+        <Link href="/" display="contents">
+          <Image src="/images/darkBrand.svg" width={190} height={32} />
+        </Link>
       </BrandSide>
       <NavSide>
         <ul>
@@ -25,7 +28,7 @@ const Menu = () => {
             </Text>
             <Text
               variant="paragraph1"
-              href="/teste"
+              href="/aboutme"
               color="tertiary.dark"
               textDecoration="none"
               transition="color 300ms"

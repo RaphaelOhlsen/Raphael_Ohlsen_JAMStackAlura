@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import styled from 'styled-components';
-
 import get from 'lodash/get';
+import propToStyle from '../../../theme/utils/propToStyle';
 
 const StyledLink = styled.a`
   color: inherit;
@@ -16,6 +16,7 @@ const StyledLink = styled.a`
   &:focus {
     opacity: 0.5;
   }
+  ${propToStyle('display')}
 `;
 
 const Link = ({ href, children, ...props }) => (

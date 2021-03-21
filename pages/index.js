@@ -6,5 +6,8 @@ export default websitePageHOC(HomeScreen, {
     seoProps: {
       headTitle: 'Home',
     },
+    menuProps: {
+      display: false,
+    },
   },
 });

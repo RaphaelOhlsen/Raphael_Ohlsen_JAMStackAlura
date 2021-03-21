@@ -1,25 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 import { CardWrapper, CardImage, CardTitle } from './styles';
-import { WebsitePageContext } from '../../wrappers/WebsitePage/index';
 
 export const Card = ({ project, size }) => {
-  const websitePageContext = useContext(WebsitePageContext);
-  const router = useRouter();
   const { title, image } = project;
   return (
     <Grid.Col value={size}>
-      <CardWrapper
-        onClick={(ev) => {
-          ev.preventDefault();
-          websitePageContext.setProject(project);
-          router.push('/project');
-        }}
-      >
+      <CardWrapper>
         <CardImage objectFit="cover">
           <Image src={image} layout="fill" />
         </CardImage>
@@ -37,4 +27,15 @@ export const Card = ({ project, size }) => {
       </CardWrapper>
     </Grid.Col>
   );
+};
+
+Card.propTypes = {
+  project: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+  size: PropTypes.shape({
+    xs: PropTypes.string.isRequired,
+    md: PropTypes.string.isRequired,
+  }).isRequired,
 };

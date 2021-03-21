@@ -48,7 +48,7 @@ export const CardWrapper = styled.div`
   transition: ${({ theme }) => theme.transition};
   color: ${({ theme }) => theme.colors.tertiary.main.color};
   margin-bottom: 30px;
-  cursor: pointer;
+  /* cursor: pointer; */
 
   &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primary.main.color};
@@ -65,7 +65,7 @@ export const CardWrapper = styled.div`
     bottom: 0;
     left: 0;
     transition: 200ms all;
-    z-index: 800;
+    z-index: 3;
   }
 
   &:hover:before {
@@ -76,7 +76,6 @@ export const CardWrapper = styled.div`
     md: css`
       height: 500px;
       margin-bottom: 50px;
-      cursor: pointer;
     `,
   })}
 `;

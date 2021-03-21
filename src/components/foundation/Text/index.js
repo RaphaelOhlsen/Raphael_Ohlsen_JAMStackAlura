@@ -45,20 +45,32 @@ export const TextStyleVariantsMap = {
 const TextBase = styled.span`
   ${(props) => TextStyleVariantsMap[props.variant]}
   color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
-  ${propToStyle('textAlign')}
-  ${propToStyle('marginRight')}
-  ${propToStyle('textDecoration')}
-  ${propToStyle('transition')}
-  ${propToStyle('marginTop')}
-  ${propToStyle('margin')}
-  ${propToStyle('maxWidth')}
-  ${propToStyle('marginTop')}
-  ${propToStyle('textTransform')}
-  ${propToStyle('letterSpacing')}
   ${propToStyle('cursor')}
+  ${propToStyle('alignSelf')}
+  ${propToStyle('display')}
+  ${propToStyle('fontSize')}
+  ${propToStyle('fontWeight')}
+  ${propToStyle('letterSpacing')}
+  ${propToStyle('margin')}
+  ${propToStyle('marginRight')}
+  ${propToStyle('marginTop')}
+  ${propToStyle('marginBottom')}
+  ${propToStyle('maxWidth')}
+  ${propToStyle('textAlign')}
+  ${propToStyle('textDecoration')}
+  ${propToStyle('textTransform')}
+  ${propToStyle('transition')}
 `;
 
 const Text = ({ tag, variant, children, href, ...props }) => {
+  if (tag === 'a' && href) {
+    return (
+      <TextBase as={tag} href={href} variant={variant} {...props}>
+        {children}
+      </TextBase>
+    );
+  }
+
   if (href) {
     return (
       <TextBase as={Link} href={href} variant={variant} {...props}>

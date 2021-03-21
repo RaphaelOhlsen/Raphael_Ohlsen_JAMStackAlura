@@ -38,7 +38,7 @@ const Modal = ({ isOpen, onClose, children }) => {
       <motion.div
         variants={{
           open: {
-            y: 365,
+            y: 130,
           },
           closed: {
             y: '100%',

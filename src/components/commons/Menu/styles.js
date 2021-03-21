@@ -11,7 +11,7 @@ export const MenuWrapper = styled.header`
   align-items: center;
 
   ${breakpointsMedia({
-    sm: css`
+    xs: css`
       margin: 20px auto;
     `,
   })}
@@ -21,7 +21,7 @@ export const MenuWrapper = styled.header`
       flex-direction: row;
       justify-content: space-between;
       padding: 14px 28px;
-      background: #0e223f;
+      background: #112a4c;
       margin: 0 auto;
       border-radius: 0 0 8px 8px;
     `,
@@ -46,7 +46,7 @@ export const NavSide = styled.nav`
 
     ${breakpointsMedia({
       sm: css`
-        margin-bottom: 64px;
+        /* margin-bottom: 64px; */
         padding: 10px 80px;
       `,
     })}

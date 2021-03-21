@@ -1,7 +1,6 @@
 /* eslint-disable import/no-cycle */
 import React, { useState, createContext } from 'react';
 import PropTypes from 'prop-types';
-import data from '../../../data';
 import Modal from '../../commons/Modal';
 import Footer from '../../commons/Footer';
 import Menu from '../../commons/Menu';
@@ -24,20 +23,11 @@ export default function WebSitePageWrapper({
   footerProps,
 }) {
   const [isModalOpen, setModalState] = useState(false);
-  const [projects, setProjects] = useState(data.projects);
-  const [selectedProject, setSelectedProject] = useState({});
   return (
     <WebsitePageContext.Provider
       value={{
         toggleModalCadastro: () => {
           setModalState(!isModalOpen);
-        },
-        getProjects: () => projects,
-        getSelectedProject: () => selectedProject,
-        setProject: (project) => {
-          console.log('estou no setProject', project);
-          setSelectedProject({ ...project });
-          console.log('O que tem em selectedProject: ', selectedProject);
         },
       }}
     >

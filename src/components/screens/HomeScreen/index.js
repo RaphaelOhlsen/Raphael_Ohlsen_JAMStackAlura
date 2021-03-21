@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import data from '../../../data';
+
 import { Card } from '../../commons/Card';
 import Header from '../../commons/Header';
 import { ProjectsTitle } from '../../commons/Header/styles';
-import { HighLightCard } from '../../commons/HighLightCard';
+// import { HighLightCard } from '../../commons/HighLightCard';
 import Box from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
-import { WebsitePageContext } from '../../wrappers/WebsitePage/index';
+import Link from '../../commons/Link';
 
 export default function HomeScreen() {
-  const websitePageContext = useContext(WebsitePageContext);
-  const projects = websitePageContext.getProjects();
+  const { projects } = data;
   return (
     <Box display="flex" flexDirection="column" width="100%">
       <Header />
@@ -27,17 +28,29 @@ export default function HomeScreen() {
           <Grid.Row>
             {projects.map((project) =>
               project.highlight ? (
-                <Card
+                <Link
                   key={project.id}
-                  project={project}
-                  size={{ xs: 12, md: 12 }}
-                />
+                  href={`/project/${project.slug}`}
+                  display="contents"
+                >
+                  <Card
+                    key={project.id}
+                    project={project}
+                    size={{ xs: 12, md: 12 }}
+                  />
+                </Link>
               ) : (
-                <Card
+                <Link
                   key={project.id}
-                  project={project}
-                  size={{ xs: 12, md: 4 }}
-                />
+                  href={`/project/${project.slug}`}
+                  display="contents"
+                >
+                  <Card
+                    key={project.id}
+                    project={project}
+                    size={{ xs: 12, md: 4 }}
+                  />
+                </Link>
               )
             )}
           </Grid.Row>
