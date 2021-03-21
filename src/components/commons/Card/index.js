@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
@@ -29,13 +30,13 @@ export const Card = ({ project, size }) => {
   );
 };
 
-Card.propTypes = {
-  project: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-  }).isRequired,
-  size: PropTypes.shape({
-    xs: PropTypes.string.isRequired,
-    md: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// Card.propTypes = {
+//   project: PropTypes.shape({
+//     title: PropTypes.string.isRequired,
+//     image: PropTypes.string.isRequired,
+//   }).isRequired,
+//   size: PropTypes.shape({
+//     xs: PropTypes.string.isRequired,
+//     md: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
