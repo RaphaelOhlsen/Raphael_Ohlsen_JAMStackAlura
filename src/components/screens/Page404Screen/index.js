@@ -44,7 +44,12 @@ const Message = styled.p`
 export default function Page404Screen() {
   return (
     <Box display="flex" flex="1" justifyContent="center">
-      <Box display="flex" flexDirection="column" alignItems="center">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Error variant="title">404</Error>
         <Message variant="title">It looks like you&lsquo;re lost.</Message>
       </Box>
