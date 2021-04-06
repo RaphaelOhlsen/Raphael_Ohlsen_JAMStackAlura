@@ -26,6 +26,9 @@ const Container = styled.div`
     `,
   })}
   ${propToStyle('marginTop')}
+  ${propToStyle('display')}
+  ${propToStyle('flex')}
+  ${propToStyle('alignItens')}
 `;
 
 export const Grid = {

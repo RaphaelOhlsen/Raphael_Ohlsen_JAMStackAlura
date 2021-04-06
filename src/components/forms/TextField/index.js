@@ -2,7 +2,8 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { lowerCase } from './masks';
-import { Input, Label, TextFieldWrapper, Message } from './styles';
+import { Input, Label, TextFieldWrapper } from './styles';
+import Text from '../../foundation/Text';
 
 Input.defaultProps = {
   tag: 'input',
@@ -15,39 +16,17 @@ export default function TextField({
   onChange,
   type,
   value,
+  error,
+  isTouched,
   mask,
-  setErrorInfo,
-  errorInfo,
   ...props
 }) {
   const fieldId = `id_${name}`;
   const isTextArea = type === 'textarea';
   const tag = isTextArea ? 'textarea' : 'input';
-  const [errorMessage, setErrorMessage] = useState('');
   const regexMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  const checkField = () => {
-    if (value.length === 0) {
-      return setErrorMessage('This field is required');
-    }
-    if (name === 'email' && !value.match(regexMail)) {
-      return setErrorMessage('Fill this field with a valid email address');
-    }
-    setErrorInfo({
-      ...errorInfo,
-      [name]: false,
-    });
-    return setErrorMessage('');
-  };
-
-  const handleOnChange = useCallback((ev) => {
-    if (ev.target.value.length > 0) setErrorMessage('');
-    if (name === 'email' && !ev.target.value.match(regexMail)) {
-      setErrorMessage('Fill this field with a valid email address');
-    }
-    if (mask === 'lowerCase') lowerCase(ev);
-    onChange(ev);
-  });
+  const hasError = Boolean(error);
+  const isFieldInvalid = hasError && isTouched;
 
   return (
     <TextFieldWrapper>
@@ -58,25 +37,30 @@ export default function TextField({
           type={type}
           value={value}
           name={name}
-          // onChange={onChange}
-          onChange={handleOnChange}
-          onFocus={() => {
-            checkField();
-          }}
-          onBlur={() => {
-            checkField();
-          }}
+          onChange={onChange}
           {...props}
         />
         <Label.Text>{label}</Label.Text>
       </Label>
-      {errorMessage && <Message>{errorMessage}</Message>}
+      {
+        isFieldInvalid && 
+        <Text
+          variant="smallestException"
+          color="primary.main"
+          display="block"
+          marginTop="5px"
+          role="alert"
+        >
+          {error}
+        </Text>}
     </TextFieldWrapper>
   );
 }
 
 TextField.defaultProps = {
   mask: null,
+  error: '',
+  isTouched: false,
 };
 
 TextField.propTypes = {
@@ -86,5 +70,6 @@ TextField.propTypes = {
   value: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   mask: PropTypes.string,
-  setErrorInfo: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  isTouched: PropTypes.bool,
 };

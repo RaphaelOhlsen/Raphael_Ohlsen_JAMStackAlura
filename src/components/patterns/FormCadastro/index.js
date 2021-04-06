@@ -9,6 +9,25 @@ import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Box from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
+import { useForm } from '../../../infra/hooks/forms/useForm';
+import { contactForm } from '../../../services/form/contactForm';
+import * as yup from 'yup';
+
+const regexMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const cadastroSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required('Este campo é obrigatório')
+    .min(3, 'Preencha com pelo menos 3 caracteres'),
+  email: yup
+    .string()
+    .matches(regexMail, "Entre com um email válido")
+    .required('Este campo é obrigatório'),
+  message: yup
+    .string()
+    .required('Este campo é obrigatório')
+})
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -20,75 +39,45 @@ const formStates = {
 const FormContent = ({ setModalState }) => {
   const [isFormSubmited, setIsFormSubmited] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
-  const [userInfo, setUserInfo] = useState({
+
+  const initialValues = {
     email: '',
     name: '',
     message: '',
-  });
-  const [errorInfo, setErrorInfo] = useState({
-    email: true,
-    name: true,
-    message: true,
-  });
-
-  const isFormInvalid =
-    errorInfo.email ||
-    userInfo.name.length === 0 ||
-    userInfo.message.length === 0;
+  }
 
   async function resetValues() {
     await new Promise((resolve) => setTimeout(resolve, 5000));
     setModalState(false);
     setIsFormSubmited(false);
     setSubmissionStatus(formStates.DEFAULT);
-    setUserInfo({ email: '', name: '', message: '' });
+    form.reset();
   }
 
-  function handleChange(ev) {
-    const fieldName = ev.target.getAttribute('name');
-    setUserInfo({
-      ...userInfo,
-      [fieldName]: ev.target.value,
-    });
-  }
+  const form = useForm({
+    initialValues,
+    onSubmit: async (values) => {
+      setIsFormSubmited(true);
+      setSubmissionStatus(formStates.LOADING);
+      const userDTO = {
+        name: values.name,
+        email: values.email,
+        message: values.message,
+      };
+      const res = await contactForm.send(userDTO);
+      res ? setSubmissionStatus(formStates.DONE)
+          : setSubmissionStatus(formStates.ERROR);
+      resetValues();
+    },
+    async validateSchema(values) {
+      return cadastroSchema.validate(values, {
+        abortEarly: false,
+      });
+    },
+  });
+
   return (
-    <form
-      onSubmit={(ev) => {
-        ev.preventDefault();
-        setIsFormSubmited(true);
-        setSubmissionStatus(formStates.LOADING);
-        const userDTO = {
-          name: userInfo.name,
-          email: userInfo.email,
-          message: userInfo.message,
-        };
-        fetch('https://contact-form-api-jamstack.herokuapp.com/message ', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userDTO),
-        })
-          .then((respostaDoServidor) => {
-            if (respostaDoServidor.ok) {
-              console.log(respostaDoServidor);
-              return respostaDoServidor.json();
-            }
-
-            throw new Error('Não foi possível cadastrar o usuário agora :(');
-          })
-          .then((respostaConvertidaEmObjeto) => {
-            setSubmissionStatus(formStates.DONE);
-            resetValues();
-            console.log(respostaConvertidaEmObjeto);
-          })
-          .catch((error) => {
-            setSubmissionStatus(formStates.ERROR);
-            resetValues();
-            console.error(error);
-          });
-      }}
-    >
+    <form onSubmit={form.handleSubmit}>
       <Box display="flex" justifyContent="center" margin="20px 0">
         <img src="/images/contact.png" height="100px" alt="Entre em contato" />
       </Box>
@@ -97,10 +86,11 @@ const FormContent = ({ setModalState }) => {
           label="Name"
           type="text"
           name="name"
-          value={userInfo.name}
-          errorInfo={errorInfo}
-          setErrorInfo={setErrorInfo}
-          onChange={handleChange}
+          value={form.values.name}
+          onChange={form.handleChange}
+          isTouched={form.touchedFields.name}
+          error={form.errors.name}
+          onBlur={form.handleBlur}
         />
       </Box>
       <Box margin="0 0 20px 0">
@@ -109,10 +99,11 @@ const FormContent = ({ setModalState }) => {
           type="email"
           name="email"
           mask="lowerCase"
-          value={userInfo.email}
-          setErrorInfo={setErrorInfo}
-          errorInfo={errorInfo}
-          onChange={handleChange}
+          value={form.values.email}
+          onChange={form.handleChange}
+          isTouched={form.touchedFields.email}
+          error={form.errors.email}
+          onBlur={form.handleBlur}
         />
       </Box>
       <Box margin="0 0 20px 0">
@@ -120,10 +111,11 @@ const FormContent = ({ setModalState }) => {
           label="Message"
           type="textarea"
           name="message"
-          value={userInfo.message}
-          onChange={handleChange}
-          setErrorInfo={setErrorInfo}
-          errorInfo={errorInfo}
+          value={form.values.message}
+          onChange={form.handleChange}
+          isTouched={form.touchedFields.message}
+          error={form.errors.message}
+          onBlur={form.handleBlur}
           rows="5"
           cols="40"
         />
@@ -132,8 +124,8 @@ const FormContent = ({ setModalState }) => {
       <Button
         variant="primary.main"
         type="submit"
-        disabled={isFormInvalid}
         fullWidth
+        disabled={form.isFormDisabled}
       >
         SEND
       </Button>
@@ -150,13 +142,16 @@ const FormContent = ({ setModalState }) => {
             />
           )}
           {isFormSubmited && submissionStatus === formStates.DONE && (
-            <Lottie
-              config={{
-                animationData: successAnimation,
-                loop: false,
-                autoplay: true,
-              }}
-            />
+            <>
+              <Lottie
+                config={{
+                  animationData: successAnimation,
+                  loop: false,
+                  autoplay: true,
+                }}
+              />
+              <p id="success" style={{display: 'none'}}></p>
+            </>
           )}
           {isFormSubmited && submissionStatus === formStates.ERROR && (
             <Lottie
