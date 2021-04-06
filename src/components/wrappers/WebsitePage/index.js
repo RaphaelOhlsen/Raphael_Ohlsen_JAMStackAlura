@@ -10,9 +10,9 @@ import FormCadastro from '../../patterns/FormCadastro';
 
 export const WebsitePageContext = createContext({
   toggleModalCadastro: () => {},
-  getProjects: () => {},
-  getSelectedProject: () => {},
-  setProject: () => {},
+  // getProjects: () => {},
+  // getSelectedProject: () => {},
+  // setProject: () => {},
 });
 
 export default function WebSitePageWrapper({

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import propToStyle from '../../../../theme/utils/propToStyle';
+import propToStyle from '../../../../theme/utils/propToSyle';
 
 const BoxBase = styled.div`
   ${propToStyle('alignItems')};
