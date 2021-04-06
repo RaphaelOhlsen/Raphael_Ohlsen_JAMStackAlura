@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next buid && next export",
-    "lint": "eslint --ignorepath .gitignore",
+    "lint": "eslint --ignore-path .gitignore",
     "custom-script": "node ./script-test.js",
     "commit": "cz",
     "test": "jest",
@@ -57,7 +57,8 @@
     "jest": "^26.6.3",
     "jest-canvas-mock": "^2.3.1",
     "jest-styled-components": "^7.0.3",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "start-server-and-test": "^1.12.1"
   },
   "husky": {
     "hooks": {
