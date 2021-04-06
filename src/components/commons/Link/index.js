@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import get from 'lodash/get';
-import propToStyle from '../../../theme/utils/propToStyle';
+import propToStyle from '../../../theme/utils/propToSyle';
 
 const StyledLink = styled.a`
   color: inherit;

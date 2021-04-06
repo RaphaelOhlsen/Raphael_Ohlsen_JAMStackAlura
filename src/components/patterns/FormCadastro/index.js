@@ -1,7 +1,10 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Lottie } from '@crello/react-lottie';
+import * as yup from 'yup';
 import errorAnimation from './animations/error.json';
 import successAnimation from './animations/success.json';
 import loadingAnimation from './animations/loading.json';
@@ -11,7 +14,6 @@ import Box from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 import { useForm } from '../../../infra/hooks/forms/useForm';
 import { contactForm } from '../../../services/form/contactForm';
-import * as yup from 'yup';
 
 const regexMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -22,12 +24,10 @@ const cadastroSchema = yup.object().shape({
     .min(3, 'Preencha com pelo menos 3 caracteres'),
   email: yup
     .string()
-    .matches(regexMail, "Entre com um email válido")
+    .matches(regexMail, 'Entre com um email válido')
     .required('Este campo é obrigatório'),
-  message: yup
-    .string()
-    .required('Este campo é obrigatório')
-})
+  message: yup.string().required('Este campo é obrigatório'),
+});
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -44,15 +44,7 @@ const FormContent = ({ setModalState }) => {
     email: '',
     name: '',
     message: '',
-  }
-
-  async function resetValues() {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-    setModalState(false);
-    setIsFormSubmited(false);
-    setSubmissionStatus(formStates.DEFAULT);
-    form.reset();
-  }
+  };
 
   const form = useForm({
     initialValues,
@@ -65,8 +57,9 @@ const FormContent = ({ setModalState }) => {
         message: values.message,
       };
       const res = await contactForm.send(userDTO);
-      res ? setSubmissionStatus(formStates.DONE)
-          : setSubmissionStatus(formStates.ERROR);
+      res
+        ? setSubmissionStatus(formStates.DONE)
+        : setSubmissionStatus(formStates.ERROR);
       resetValues();
     },
     async validateSchema(values) {
@@ -75,6 +68,14 @@ const FormContent = ({ setModalState }) => {
       });
     },
   });
+
+  async function resetValues() {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    setModalState(false);
+    setIsFormSubmited(false);
+    setSubmissionStatus(formStates.DEFAULT);
+    form.reset();
+  }
 
   return (
     <form onSubmit={form.handleSubmit}>
@@ -150,7 +151,7 @@ const FormContent = ({ setModalState }) => {
                   autoplay: true,
                 }}
               />
-              <p id="success" style={{display: 'none'}}></p>
+              <p id="success" style={{ display: 'none' }} />
             </>
           )}
           {isFormSubmited && submissionStatus === formStates.ERROR && (

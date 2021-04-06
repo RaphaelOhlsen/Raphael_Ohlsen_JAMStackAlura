@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { lowerCase } from './masks';
 import { Input, Label, TextFieldWrapper } from './styles';
 import Text from '../../foundation/Text';
 
@@ -19,12 +18,12 @@ export default function TextField({
   error,
   isTouched,
   mask,
+  placeholder,
   ...props
 }) {
   const fieldId = `id_${name}`;
   const isTextArea = type === 'textarea';
   const tag = isTextArea ? 'textarea' : 'input';
-  const regexMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const hasError = Boolean(error);
   const isFieldInvalid = hasError && isTouched;
 
@@ -42,8 +41,7 @@ export default function TextField({
         />
         <Label.Text>{label}</Label.Text>
       </Label>
-      {
-        isFieldInvalid && 
+      {isFieldInvalid && (
         <Text
           variant="smallestException"
           color="primary.main"
@@ -52,7 +50,8 @@ export default function TextField({
           role="alert"
         >
           {error}
-        </Text>}
+        </Text>
+      )}
     </TextFieldWrapper>
   );
 }
