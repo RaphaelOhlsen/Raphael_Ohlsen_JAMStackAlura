@@ -1,11 +1,12 @@
-async function HttpClient(url, {headers, body, ...options}) {
+/* eslint-disable no-console */
+async function HttpClient(url, { headers, body, ...options }) {
   return fetch(url, {
     headers: {
       ...headers,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
-    ...options
+    ...options,
   })
     .then((respostaDoServidor) => {
       if (respostaDoServidor.ok) {
@@ -20,14 +21,13 @@ async function HttpClient(url, {headers, body, ...options}) {
 }
 
 export const contactForm = {
-  async send(userDTO) {
-    return HttpClient('https://contact-form-api-jamstack.herokuapp.com/message', {
-      method: 'POST',
-      body: userDTO,
-    })
-      .then((res) => {
-        return res;
-      })
-      
+  async send(userDTO, HttpClientModule = HttpClient) {
+    return HttpClientModule(
+      'https://contact-form-api-jamstack.herokuapp.com/message',
+      {
+        method: 'POST',
+        body: userDTO,
+      }
+    ).then((res) => res);
   },
-}
+};
