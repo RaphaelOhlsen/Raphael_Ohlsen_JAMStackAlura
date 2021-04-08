@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 function formatErrors(yupErrorsInner = []) {
   return yupErrorsInner.reduce((errorObejectAcc, currentError) => {
@@ -12,7 +12,7 @@ function formatErrors(yupErrorsInner = []) {
   }, {});
 }
 
-export function useForm({initialValues, onSubmit, validateSchema}) {
+export function useForm({ initialValues, onSubmit, validateSchema }) {
   const [values, setValues] = useState(initialValues);
   const [isFormDisabled, setIsFormDisabled] = useState(true);
   const [errors, setErrors] = useState({});

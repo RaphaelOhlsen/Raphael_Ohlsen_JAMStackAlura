@@ -36,7 +36,7 @@ const formStates = {
   ERROR: 'ERROR',
 };
 
-const FormContent = ({ setModalState }) => {
+export const FormContent = ({ setModalState, onSubmit }) => {
   const [isFormSubmited, setIsFormSubmited] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
 
@@ -78,7 +78,7 @@ const FormContent = ({ setModalState }) => {
   }
 
   return (
-    <form onSubmit={form.handleSubmit}>
+    <form onSubmit={onSubmit || form.handleSubmit}>
       <Box display="flex" justifyContent="center" margin="20px 0">
         <img src="/images/contact.png" height="100px" alt="Entre em contato" />
       </Box>

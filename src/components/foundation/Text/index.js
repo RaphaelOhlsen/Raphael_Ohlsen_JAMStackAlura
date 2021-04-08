@@ -104,6 +104,7 @@ Text.propTypes = {
     'li',
     'a',
     'span',
+    'input',
   ]),
   children: PropTypes.node,
   variant: PropTypes.oneOf([
